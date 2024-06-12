@@ -5,12 +5,12 @@ import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = config('DJANGO_SECRET_KEY')
+SECRET_KEY = config('DJANGO_SECRET_KEY', default='super-secret-key')
 
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1,localhost,nature.up.railway.app').split(',')
-
+ALLOWED_HOSTS = config('ALLOWED_HOSTS','nature.up.railway.app', default='127.0.0.1')
+ALLOWED_HOSTS += ['*',]
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
@@ -68,6 +68,7 @@ DATABASES = {
     'default': dj_database_url.config(default=config('DATABASE_URL'))
 }
 
+# Autentifikacijos slaptažodžių tikrinimo nustatymai
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -112,12 +113,6 @@ DEFAULT_FROM_EMAIL = config('EMAIL_HOST_USER')
 
 from .tinymce_config import TINYMCE_DEFAULT_CONFIG
 
-if not DEBUG:
-    SECURE_SSL_REDIRECT = True
-    SESSION_COOKIE_SECURE = True
-    CSRF_COOKIE_SECURE = True
-    SECURE_HSTS_SECONDS = 31536000  # 1 year
-    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-    SECURE_HSTS_PRELOAD = True
-    SECURE_BROWSER_XSS_FILTER = True
-    SECURE_CONTENT_TYPE_NOSNIFF = True
+
+
+
