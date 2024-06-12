@@ -3,24 +3,18 @@ from pathlib import Path
 from decouple import config
 import dj_database_url
 
-# Bazinio katalogo nustatymas
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Slapto rakto nustatymas
 SECRET_KEY = config('DJANGO_SECRET_KEY')
 
-# Derinimo režimo nustatymas
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-# Leidžiami domenai
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1,localhost').split(',')
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1,localhost,nature.up.railway.app').split(',')
 
-# Vidiniai IP adresai
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
 
-# Įdiegtos programos
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -38,7 +32,6 @@ INSTALLED_APPS = [
 
 SITE_ID = 1
 
-# Middleware
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -51,10 +44,8 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
-# Pagrindinio URL konfigūracijos nustatymas
 ROOT_URLCONF = 'system.urls'
 
-# Šablonų nustatymai
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -71,15 +62,12 @@ TEMPLATES = [
     },
 ]
 
-# WSGI programos nustatymas
 WSGI_APPLICATION = 'system.wsgi.application'
 
-# Duomenų bazių nustatymai
 DATABASES = {
-    'default': dj_database_url.config(default='sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3'))
+    'default': dj_database_url.config(default=config('DATABASE_URL'))
 }
 
-# Autentifikacijos slaptažodžių tikrinimo nustatymai
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -95,31 +83,25 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# Kalbos ir laiko nustatymai
 LANGUAGE_CODE = 'lt'
 TIME_ZONE = 'Europe/Vilnius'
 USE_I18N = True
 USE_TZ = True
 
-# Statinių failų nustatymai
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# Medijos failų nustatymai
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# Automatinio lauko nustatymas
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Prisijungimo ir atsijungimo nukreipimai
 LOGIN_URL = 'users:login'
 LOGIN_REDIRECT_URL = 'blog:home'
 LOGOUT_REDIRECT_URL = 'blog:home'
 
-# El. pašto nustatymai
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
@@ -128,10 +110,8 @@ EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = config('EMAIL_HOST_USER')
 
-# TinyMCE nustatymai
 from .tinymce_config import TINYMCE_DEFAULT_CONFIG
 
-# Saugumo nustatymai (pvz., tik gamybos aplinkoje)
 if not DEBUG:
     SECURE_SSL_REDIRECT = True
     SESSION_COOKIE_SECURE = True
