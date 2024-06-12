@@ -1,0 +1,49 @@
+.article-title {
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    color: #5d6194;
+    text-align: left;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.article-divider {
+    border: 1px solid #fd9f23;
+    height: 1px;
+    background: #fd637f;
+    margin: 10px 0 20px 0; /* Paliekame vietą viršuje ir apačioje, bet jokio centravimo */
+    width: 80%; /* Užtikriname, kad linija išsitemptų per visą tėvinį elementą */
+}
+/* Nuorodų stilius pagrindiniame sąraše */
+.list-group-item > a {
+    text-decoration: none; /* Pašalina pabraukimą iš nuorodų */
+    color: #007bff; /* Nustato nuorodų spalvą */
+    font-size: 1.1rem; /* Nustato nuorodų šriftą */
+}
+
+/* Nuorodų stilius, kai užvedama pele */
+.list-group-item > a:hover {
+    text-decoration: underline; /* Pabraukia nuorodą, kai užvedama pele */
+    color: #3fc36a; /* Pakeičia nuorodos spalvą, kai užvedama pele */
+}
+
+/* Pagrindinio sąrašo submeniu įtrauka */
+.list-group-item ul {
+    padding-left: 1rem; /* Įtraukia submeniu 1rem į kairę */
+}
+
+/* Submeniu elementų stilius */
+.list-group-item ul .list-group-item {
+    border: none; /* Pašalina apatinę liniją iš submeniu elementų */
+    padding-left: 1rem; /* Papildomai įtraukia submeniu elementus */
+}
+
+/* Submeniu nuorodų stilius */
+.list-group-item ul .list-group-item a {
+    color: #6c757d; /* Nustato submeniu nuorodų spalvą */
+}
+
+/* Submeniu nuorodų stilius, kai užvedama pele */
+.list-group-item ul .list-group-item a:hover {
+    color: #3690fd; /* Pakeičia submeniu nuorodų spalvą, kai užvedama pele */
+}

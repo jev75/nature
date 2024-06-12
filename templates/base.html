@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="{% static 'images/favicon.ico' %}">
+
+    <!-- INCLUDE CSS -->
+    <link href="{% static 'css/bootstrap.css' %}" type="text/css" rel="stylesheet">
+    <link href="{% static 'fontawesome/css/all.css' %}" type="text/css" rel="stylesheet">
+    <link href="{% static 'css/custom.css' %}" type="text/css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        {% include 'header.html' %}
+        <div class="row mt-4">
+            <div class="col-md-8">
+                {% include 'includes/messages.html' %}
+                {% block content %}
+                {% endblock %}
+                {% include 'pagination.html' %}
+            </div>
+            <div class="col-md-4">
+                {% include 'sidebar.html' %}
+            </div>
+        </div>
+    </div>
+
+    <!-- INCLUDE JAVASCRIPT -->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
+    <script src="{% static 'fontawesome/js/all.min.js' %}"></script>
+</body>
+</html>

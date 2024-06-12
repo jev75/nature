@@ -1,0 +1,21 @@
+<div class="card mb-3">
+    <div class="card-body">
+        <h5 class="card-title">Kategorijos</h5>
+        <ul class="list-group list-group-flush">
+            {% for category in categories %}
+                <li class="list-group-item">
+                    <a href="{{ category.get_absolute_url }}" class="fw-bold">{{ category.name }}</a>
+                    {% if category.subcategories.exists %}
+                        <ul class="list-group mt-2">
+                            {% for subcategory in category.subcategories.all %}
+                                <li class="list-group-item">
+                                    <a href="{{ subcategory.get_absolute_url }}">{{ subcategory.name }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

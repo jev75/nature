@@ -1,0 +1,53 @@
+<header class="mt-3">
+  <div class="px-3 py-2 text-bg-dark" style="border-radius: 10px 10px 0 0;">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-between">
+        <a href="/" class="d-flex align-items-center my-2 my-lg-0 me-lg-3 text-white text-decoration-none">
+          <img width="64" src="https://cdn-icons-png.flaticon.com/512/8277/8277654.png" alt="Puslapio logotipas"/>
+        </a>
+
+        <form class="col-12 col-lg-auto mb-2 mb-lg-0 me-lg-auto" role="search">
+          <input type="search" class="form-control" placeholder="Ieškoti..." aria-label="Search">
+        </form>
+
+        <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+          <li>
+            <a href="{% url 'blog:home' %}" class="nav-link text-secondary">
+              <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use href="#home"></use></svg>
+              Pradžia
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'blog:articles_list' %}" class="nav-link text-white">
+              <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use href="#list"></use></svg>
+              Straipsniai
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link text-white">
+              <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use href="#plus-circle"></use></svg>
+              Pridėti straipsnį
+            </a>
+          </li>
+        </ul>
+
+        <div class="d-flex align-items-center">
+          {% if request.user.is_authenticated %}
+            <div class="text-end">
+              <a href="{% url 'users:profile_detail' pk=request.user.profile.pk %}" class="btn btn-secondary me-2">{{ request.user.username }}</a>
+              <form method="post" action="{% url 'users:logout' %}" class="d-inline">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary">Atsijungti</button>
+              </form>
+            </div>
+          {% else %}
+            <div class="text-end">
+              <a href="{% url 'users:login' %}" class="btn btn-light text-dark me-2">Prisijungti</a>
+              <a href="{% url 'users:register' %}" class="btn btn-primary">Registracija</a>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
