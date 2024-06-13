@@ -9,7 +9,7 @@ SECRET_KEY = config('DJANGO_SECRET_KEY')
 
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = config('nature.up.railway.app', '127.0.0.1', 'localhost')
+ALLOWED_HOSTS = config('nature-production.up.railway.app', '127.0.0.1', 'localhost')
 # INTERNAL_IPS = [
 #    '127.0.0.1',
 # ]
