@@ -10,10 +10,9 @@ SECRET_KEY = config('DJANGO_SECRET_KEY', default='super-secret-key')
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS','nature.up.railway.app', default='127.0.0.1')
-ALLOWED_HOSTS += ['*',]
-INTERNAL_IPS = [
-    '127.0.0.1',
-]
+# INTERNAL_IPS = [
+#    '127.0.0.1',
+# ]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -30,7 +29,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
 ]
 
-SITE_ID = 1
+# SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -68,7 +67,6 @@ DATABASES = {
     'default': dj_database_url.config(default=config('DATABASE_URL'))
 }
 
-# Autentifikacijos slaptažodžių tikrinimo nustatymai
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
