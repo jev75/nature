@@ -2,19 +2,5 @@
 .venv/
 venv/
 
-# Python
-*.pyc
-__pycache__/
-*.pyo
-*.pyd
-*.pdb
-
-
-
 # IDEs and editors
 .idea/
-.vscode/
-.project
-.pydevproject
-
-
