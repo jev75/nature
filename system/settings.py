@@ -9,12 +9,12 @@ SECRET_KEY = config('DJANGO_SECRET_KEY')
 
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1,localhost').split(',')
+# Pridėkite savo Heroku domeną į ALLOWED_HOSTS sąrašą
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1,localhost,mysiteup-b5e057ed4ccd.herokuapp.com').split(',')
 
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
-
 
 SITE_ID = 1
 
@@ -31,7 +31,6 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'users.apps.UsersConfig',
 ]
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
