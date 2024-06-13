@@ -1,2 +1,10 @@
-[start]
-cmd = "gunicorn system.wsgi --log-file -"
+[build]
+builder = "NIXPACKS"
+nixpacksConfigPath = "nixpacks.toml"
+
+[deploy]
+runtime = "LEGACY"
+numReplicas = 1
+sleepApplication = false
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 10
