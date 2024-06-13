@@ -47,3 +47,29 @@
 .list-group-item ul .list-group-item a:hover {
     color: #3690fd; /* Pakeičia submeniu nuorodų spalvą, kai užvedama pele */
 }
+
+/* Kategorijos nuorodos stilius */
+.category-link {
+    color: #3690fd;
+    text-decoration: none; /* Nuimamas pabraukimas */
+    font-weight: bold; /* Paryškintas tekstas */
+}
+
+/* Kategorijos nuorodos stilius, kai užvedama pele */
+.category-link:hover {
+    color: #10b0fc; /* Tamsesnis atspalvis užvedus */
+    text-decoration: underline; /* Pridedamas pabraukimas */
+}
+
+/* Subkategorijos nuorodos stilius */
+.subcategory-link {
+    color: #7981d8;
+    text-decoration: none; /* Nuimamas pabraukimas */
+    font-weight: bold; /* Paryškintas tekstas */
+}
+
+/* Subkategorijos nuorodos stilius, kai užvedama pele */
+.subcategory-link:hover {
+    color: #1e7e34; /* Tamsesnis atspalvis užvedus */
+    text-decoration: underline; /* Pridedamas pabraukimas */
+}

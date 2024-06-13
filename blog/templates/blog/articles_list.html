@@ -19,11 +19,11 @@
                     <hr>
                     <p class="card-text">
                         Kategorija:
-                        <a href="{% url 'blog:articles_by_category' article.subcategory.category.id %}">
+                        <a href="{% url 'blog:articles_by_category' article.subcategory.category.id %}" class="category-link">
                             {{ article.subcategory.category.name }}
                         </a> /
 
-                        <a href="{% url 'blog:articles_by_subcategory' article.subcategory.id %}">
+                        <a href="{% url 'blog:articles_by_subcategory' article.subcategory.id %}" class="subcategory-link">
                             {{ article.subcategory.name }}
                         </a> /
                         Pridėjo: {{ article.author.username }}
