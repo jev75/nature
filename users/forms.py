@@ -7,7 +7,6 @@ User = get_user_model()
 
 class ApplyFormControlMixin:
     def apply_form_control(self):
-        """Apply Bootstrap form-control class to all fields."""
         for field in self.fields:
             self.fields[field].widget.attrs.update({
                 'class': 'form-control',

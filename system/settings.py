@@ -2,6 +2,8 @@ import os
 from pathlib import Path
 from decouple import config
 import dj_database_url
+import django_heroku
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -9,8 +11,7 @@ SECRET_KEY = config('DJANGO_SECRET_KEY')
 
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-# Pridėkite savo Heroku domeną į ALLOWED_HOSTS sąrašą
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1,localhost,mysiteup-b5e057ed4ccd.herokuapp.com').split(',')
+ALLOWED_HOSTS = ['*', '127.0.0.1', 'localhost']
 
 INTERNAL_IPS = [
     '127.0.0.1',
@@ -116,8 +117,10 @@ if not DEBUG:
     SECURE_SSL_REDIRECT = True
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
-    SECURE_HSTS_SECONDS = 31536000  # 1 year
+    SECURE_HSTS_SECONDS = 31536000
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_HSTS_PRELOAD = True
     SECURE_BROWSER_XSS_FILTER = True
     SECURE_CONTENT_TYPE_NOSNIFF = True
+
+django_heroku.settings(locals())
